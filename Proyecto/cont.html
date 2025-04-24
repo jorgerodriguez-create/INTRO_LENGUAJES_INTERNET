@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Café & Co.</title>
+    <link rel="stylesheet" href="cont_style.css">
+</head>
+<body>
+    <!-- Header (reutilizando el mismo que en las otras páginas) -->
+    <header class="header">
+        <div class="logo">Café & Co.</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="reserv.html">Reservaciones</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a class="active" href="cont.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contacto-container">
+        <h1>Contáctanos</h1>
+
+        <!-- Información de contacto -->
+        <div class="info-contacto">
+            <p><strong>Dirección:</strong> Calle Ficticia 123, Bogotá, Colombia</p>
+            <p><strong>Teléfono:</strong> +57 1 234 5678</p>
+            <p><strong>Email:</strong> <a href="mailto:contacto@cafeandco.com">contacto@cafeandco.com</a></p>
+            
+            <!-- Mapa interactivo -->
+            <div id="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.1266964183145!2d-74.07209230521527!3d4.7110119841112715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f98ccf0e88b37%3A0xa2b67a6509d56e9!2sCalle%20Ficticia%20123%2C%20Bogot%C3%A1!5e0!3m2!1ses-419!2sco!4v1674013542499!5m2!1ses-419!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- Formulario de contacto -->
+        <div class="formulario-contacto">
+            <h2>Envía un mensaje</h2>
+            <form id="contact-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" required></textarea>
+
+                <button type="submit">Enviar mensaje</button>
+            </form>
+            <div id="mensaje-confirmacion" class="mensaje-oculto">¡Tu mensaje ha sido enviado con éxito!</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Café & Co. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="cont_script.js"></script>
+</body>
+</html>

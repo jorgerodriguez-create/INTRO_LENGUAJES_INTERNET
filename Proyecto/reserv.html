@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservaciones - Café & Co.</title>
+  <link rel="stylesheet" href="reserv_styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">Café & Co.</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="menu.html">Menú</a></li>
+        <li><a href="reserv.html" class="active">Reservas</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="cont.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Formulario de Reservación -->
+  <main class="reserva-container">
+    <h1>Reservar una Mesa</h1>
+    <form id="form-reserva">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo" required />
+
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <label for="hora">Hora:</label>
+      <input type="time" id="hora" name="hora" required />
+
+      <label for="personas">Número de personas:</label>
+      <input type="number" id="personas" name="personas" min="1" required />
+
+      <button type="submit">Reservar</button>
+
+      <p id="mensaje-confirmacion" class="mensaje-oculto">¡Tu reserva ha sido registrada con éxito!</p>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Café & Co. - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="reserv_script.js"></script>
+</body>
+</html>

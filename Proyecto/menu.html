@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú | Café & Co.</title>
+  <link rel="stylesheet" href="menu_styles.css" />
+  <style>
+    .card h3 {
+      margin: 0.8rem 0 0.3rem;
+      font-size: 1.5rem;
+      color: #3b2f2f;
+      text-align: center;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">Café & Co.</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="menu.html" class="active">Menú</a></li>
+        <li><a href="reserv.html">Reservaciones</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="cont.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="menu-container">
+    <h1>Nuestros Productos</h1>
+    <div class="grid-productos">
+      
+      <div class="card">
+        <img src="https://apasionados-por-el-cafe.s3.amazonaws.com/wp-content/uploads/2020/06/taza-de-cafe-americano.jpg" alt="Café Americano">
+        <h3>Café Americano</h3>
+        <p>Un café suave con un toque de caramelo.</p>
+        <span>$3500</span>
+        <div class="btn-container">
+          <button class="btn-carrito" data-producto="Café Americano">Añadir</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="https://www.animalgourmet.com/wp-content/uploads/2020/08/AG-Pastel-chocolate-card-mx-e1598470405313.jpg" alt="Tarta de Chocolate">
+        <h3>Tarta de Chocolate</h3>
+        <p>Pastel artesanal con cobertura de chocolate negro.</p>
+        <span>$4000</span>
+        <div class="btn-container">
+          <button class="btn-carrito" data-producto="Tarta de Chocolate">Añadir</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="https://cdn.bioguia.com/embed/030b945b25102b094e7abbb69631566582890/delicioso-latte-vegano-almendras-vainilla.jpg?imagick=1&size=500" alt="Latte de Vainilla">
+        <h3>Latte de Vainilla</h3>
+        <p>Leche espumosa y café suave con esencia de vainilla.</p>
+        <span>$4200</span>
+        <div class="btn-container">
+          <button class="btn-carrito" data-producto="Latte de Vainilla">Añadir</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="https://www.vortexmag.net/wp-content/uploads/2020/07/gluten-free-new-york-cheesecake-1450985-hero-01-dc54f9daf38044238b495c7cefc191fa.jpg" alt="Cheesecake">
+        <h3>Cheesecake</h3>
+        <p>Clásico pastel de queso con base de galleta.</p>
+        <span>$4500</span>
+        <div class="btn-container">
+          <button class="btn-carrito" data-producto="Cheesecake">Añadir</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="https://media.saigontourist.edu.vn/Media/1_STHCHOME/FolderFunc/202303/Images/capuchino-la-gi-20230320105423-e.jpg" alt="Cappuccino">
+        <h3>Cappuccino</h3>
+        <p>Café espumoso con un toque de canela.</p>
+        <span>$3800</span>
+        <div class="btn-container">
+          <button class="btn-carrito" data-producto="Cappuccino">Añadir</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="https://www.mashed.com/img/gallery/the-untold-truth-of-croissants/the-shape-hints-at-the-ingredient-quality-1648655991.jpg" alt="Croissant">
+        <h3>Croissant</h3>
+        <p>Delicioso hojaldre francés, recién horneado.</p>
+        <span>$2500</span>
+        <div class="btn-container">
+          <button class="btn-carrito" data-producto="Croissant">Añadir</button>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Café & Co.</p>
+  </footer>
+
+  <script src="menu_script.js"></script>
+</body>
+</html>
