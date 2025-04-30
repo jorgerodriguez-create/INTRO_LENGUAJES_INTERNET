@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #fdf6f0; /* Color suave de fondo */
+  background-color: #fdf6f0;
 }
 
 /* ENCABEZADO */
@@ -50,7 +50,7 @@ nav ul li a:hover {
   opacity: 0.95;
 }
 
-/* BANNER INTERMEDIO */
+/* INTERMEDIO */
 .banner {
   background: url('https://images.vexels.com/media/users/3/170945/raw/afed377f5a3653e218393cb8d8d1383e-ilustracion-de-cafeteria-moderna.jpg') no-repeat center center/cover;
   color: white;

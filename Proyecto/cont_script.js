@@ -1,6 +1,6 @@
 // Validación del formulario de contacto
 document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();  // Evita que el formulario se envíe de forma predeterminada
+    e.preventDefault();  
 
     // Obtener los valores de los campos
     const nombre = document.getElementById('nombre').value;
