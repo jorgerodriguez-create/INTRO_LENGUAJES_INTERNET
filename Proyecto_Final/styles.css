@@ -1,0 +1,231 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.main-header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between; /* Espacia los elementos hijos */
+    align-items: center;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    margin: 0 auto; /* Centra horizontalmente el título */
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Estilos para el filtro de categorías (lado izquierdo) */
+#categoryFilter {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 1rem; /* Espacio entre el filtro y el título */
+    transition: transform 0.2s ease-in-out; /* Transición para el hover */
+}
+
+#categoryFilter:hover {
+    transform: scale(1.2); /* Agrandar ligeramente al pasar el cursor */
+}
+
+/* Estilos para el contenedor del carrito (lado derecho) */
+.cart-container {
+    position: relative;
+    margin-left: 13rem; /* Espacio entre el título y el carrito */
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out; /* Transición para el hover */
+}
+
+.cart-icon:hover {
+    transform: scale(1.4); /* Agrandar ligeramente el icono del carrito */
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease-in-out; /* Transición para el hover */
+}
+
+.product-card:hover {
+    transform: scale(1.08); /* Agrandar ligeramente la tarjeta del producto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añadir una sombra más pronunciada al hacer hover */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.product-card .price {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.product-card button {
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out; /* Transición para el hover */
+    border: none;
+}
+
+.product-card button:hover {
+    transform: scale(1.1); /* Agrandar ligeramente los botones del producto */
+}
+
+.product-card button.add-to-cart {
+    background-color: #007bff;
+    color: white;
+}
+
+.product-card button.add-to-cart:hover {
+    background-color: #0056b3;
+}
+
+.product-card button.view-details {
+    background-color: #6c757d;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.product-card button.view-details:hover {
+    background-color: #5a6268;
+}
+
+/* Estilos para el modal (se aplica también el efecto hover al botón) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 50px;
+    border: 10px solid #888;
+    width: 40%;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out; /* Transición para el hover */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.2); /* Agrandar ligeramente la "x" */
+}
+
+#modal-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#modal-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#modal-description {
+    margin-bottom: 15px;
+}
+
+#modal-stock {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+#add-to-cart-modal {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out; /* Transición para el hover */
+}
+
+#add-to-cart-modal:hover {
+    background-color: #0056b3;
+    transform: scale(1.08); /* Agrandar ligeramente el botón del modal */
+}
