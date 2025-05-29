@@ -1,72 +1,75 @@
 const cartItemsContainer = document.getElementById("cart-items-container");
- const totalPriceElement = document.getElementById("total-price");
- const clearCartButton = document.getElementById("clear-cart-button");
- const backToStoreButton = document.getElementById("back-to-store-button");
- const cartCountHeader = document.getElementById("cart-count-header");
+const totalPriceElement = document.getElementById("total-price");
+const clearCartButton = document.getElementById("clear-cart-button");
+const backToStoreButton = document.getElementById("back-to-store-button");
+const cartCountHeader = document.getElementById("cart-count-header");
 
- let cart = {}; // Objeto para almacenar los items del carrito (ID: cantidad)
- let productsData = []; // Almacenará la información completa de los productos
+let cart = {}; // Objeto para almacenar los items del carrito (ID: cantidad)
+let productsData = []; // Almacenará la información completa de los productos
 
- // Función para cargar el carrito desde el localStorage
- function loadCart() {
+// Función para cargar el carrito desde el localStorage
+function loadCart() {
   const storedCart = localStorage.getItem("cart");
   if (storedCart) {
-   cart = JSON.parse(storedCart);
+    cart = JSON.parse(storedCart);
   }
   updateCartDisplay();
- }
+}
 
- // Función para guardar el carrito en el localStorage
- function saveCart() {
+// Función para guardar el carrito en el localStorage
+function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCountHeader();
- }
+}
 
- // Función para obtener la información completa de los productos desde la API
- async function fetchProductsData() {
+// Función para obtener la información completa de los productos desde la API
+async function fetchProductsData() {
   try {
-   const response = await fetch("https://fakestoreapi.com/products");
-   productsData = await response.json();
-   loadCart(); // Cargar el carrito después de obtener los datos de los productos
+    const response = await fetch("https://fakestoreapi.com/products");
+    productsData = await response.json();
+    loadCart(); // Cargar el carrito después de obtener los datos de los productos
   } catch (error) {
-   console.error("Error fetching products data:", error);
-   cartItemsContainer.innerHTML = "<p>Error al cargar los productos del carrito.</p>";
+    console.error("Error fetching products data:", error);
+    cartItemsContainer.innerHTML = "<p>Error al cargar los productos del carrito.</p>";
   }
- }
+}
 
- // Función para actualizar el contador del carrito en el header
- function updateCartCountHeader() {
+// ✅ Función para actualizar el contador del carrito en el header con verificación
+function updateCartCountHeader() {
   const totalItems = Object.values(cart).reduce((sum, count) => sum + count, 0);
-  cartCountHeader.textContent = totalItems;
- }
 
- // Función para renderizar los items del carrito en la página
- function updateCartDisplay() {
+  if (cartCountHeader) {
+    cartCountHeader.textContent = totalItems;
+  }
+}
+
+// Función para renderizar los items del carrito en la página
+function updateCartDisplay() {
   cartItemsContainer.innerHTML = "";
   let total = 0;
 
   for (const productId in cart) {
-   const quantity = cart[productId];
-   const product = productsData.find(p => p.id === parseInt(productId));
+    const quantity = cart[productId];
+    const product = productsData.find(p => p.id === parseInt(productId));
 
-   if (product) {
-    const cartItem = document.createElement("div");
-    cartItem.classList.add("cart-item");
-    cartItem.innerHTML = `
-     <img src="${product.image}" alt="${product.title}">
-     <div class="cart-item-details">
-      <h4>${product.title}</h4>
-      <p>Precio: $${product.price}</p>
-     </div>
-     <div class="cart-item-quantity">Cantidad: ${quantity}</div>
-     <div class="cart-item-actions">
-      <button class="remove-one-button" data-id="${productId}">Eliminar uno</button>
-      <button class="remove-all-button" data-id="${productId}">Eliminar todo</button>
-     </div>
-    `;
-    cartItemsContainer.appendChild(cartItem);
-    total += product.price * quantity;
-   }
+    if (product) {
+      const cartItem = document.createElement("div");
+      cartItem.classList.add("cart-item");
+      cartItem.innerHTML = `
+        <img src="${product.image}" alt="${product.title}">
+        <div class="cart-item-details">
+          <h4>${product.title}</h4>
+          <p>Precio: $${product.price}</p>
+        </div>
+        <div class="cart-item-quantity">Cantidad: ${quantity}</div>
+        <div class="cart-item-actions">
+          <button class="remove-one-button" data-id="${productId}">Eliminar uno</button>
+          <button class="remove-all-button" data-id="${productId}">Eliminar todo</button>
+        </div>
+      `;
+      cartItemsContainer.appendChild(cartItem);
+      total += product.price * quantity;
+    }
   }
 
   totalPriceElement.textContent = total.toFixed(2);
@@ -74,56 +77,69 @@ const cartItemsContainer = document.getElementById("cart-items-container");
   // Agregar event listeners a los botones de eliminar
   const removeOneButtons = document.querySelectorAll(".remove-one-button");
   removeOneButtons.forEach(button => {
-   button.addEventListener("click", removeOneFromCart);
+    button.addEventListener("click", removeOneFromCart);
   });
 
   const removeAllButtons = document.querySelectorAll(".remove-all-button");
   removeAllButtons.forEach(button => {
-   button.addEventListener("click", removeAllFromCart);
+    button.addEventListener("click", removeAllFromCart);
   });
 
   // Mostrar mensaje si el carrito está vacío
   if (Object.keys(cart).length === 0) {
-   cartItemsContainer.innerHTML = "<p>El carrito está vacío.</p>";
-   totalPriceElement.textContent = "0.00";
+    cartItemsContainer.innerHTML = "<p>El carrito está vacío.</p>";
+    totalPriceElement.textContent = "0.00";
   }
- }
+}
 
- // Función para eliminar un producto del carrito
- function removeOneFromCart(event) {
+// Función para eliminar un producto del carrito
+function removeOneFromCart(event) {
   const productIdToRemove = event.target.dataset.id;
   if (cart[productIdToRemove] > 1) {
-   cart[productIdToRemove]--;
+    cart[productIdToRemove]--;
   } else {
-   delete cart[productIdToRemove];
+    delete cart[productIdToRemove];
   }
   saveCart();
   updateCartDisplay();
- }
+}
 
- // Función para eliminar todos los productos de un tipo del carrito
- function removeAllFromCart(event) {
+// Función para eliminar todos los productos de un tipo del carrito
+function removeAllFromCart(event) {
   const productIdToRemove = event.target.dataset.id;
   delete cart[productIdToRemove];
   saveCart();
   updateCartDisplay();
- }
+}
 
- // Función para vaciar completamente el carrito
- function clearCart() {
+// Función para vaciar completamente el carrito
+function clearCart() {
   cart = {};
   saveCart();
   updateCartDisplay();
- }
+}
 
- // Event listener para el botón de vaciar carrito
- clearCartButton.addEventListener("click", clearCart);
+// Event listener para el botón de vaciar carrito
+clearCartButton.addEventListener("click", clearCart);
 
- // Event listener para el botón de regresar a la tienda
- backToStoreButton.addEventListener("click", () => {
+// Event listener para el botón de regresar a la tienda
+backToStoreButton.addEventListener("click", () => {
   window.location.href = "index.html"; // Redirigir a la página principal
- });
+});
 
- // Inicialización
- fetchProductsData();
- updateCartCountHeader(); // Inicializar el contador del header al cargar la página
+// Event listener para el botón Comprar
+const buyButton = document.getElementById("buy-button");
+if (buyButton) {
+  buyButton.addEventListener("click", () => {
+    if (Object.keys(cart).length === 0) {
+      alert("El carrito está vacío. Agrega productos antes de comprar.");
+    } else {
+      window.location.href = "checkout.html"; // Redirigir al formulario de compra
+    }
+  });
+}
+
+
+// Inicialización
+fetchProductsData();
+updateCartCountHeader(); // Inicializar el contador del header al cargar la página

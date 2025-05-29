@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario de Compra</title>
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body>
+  <main>
+    <h1>Formulario de Compra</h1>
+    <form id="checkout-form">
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" required placeholder="ejemplo@correo.com" />
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" required minlength="6" maxlength="20" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$" title="Debe tener al menos una mayúscula, una minúscula y un número." />
+
+      <label for="account">Cuenta bancaria o tarjeta:</label>
+      <input type="text" id="account" required pattern="\d{12,19}" title="Debe ser un número de entre 12 y 19 dígitos." />
+
+      <div class="buttons">
+        <button type="submit">Comprar</button>
+        <button type="button" id="back-button">Volver</button>
+      </div>
+
+      <p id="message" class="message"></p>
+    </form>
+  </main>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
